@@ -1,0 +1,56 @@
+ <div class="container"></div>
+  <table>
+    <thead>
+      <th>Welcome</th>
+      <th>email</th>
+      <th>role</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ this.authService.user.firstname }}{{ this.authService.user.lastname }}</td>
+        <td>{{ this.authService.user.email }}</td>
+        <td>{{ this.authService.user.userole }}</td>
+      </tr>
+    </tbody>
+  </table>
+ 
+ 
+    <div class="row">
+      <div class="col-8">
+        <h2 class="text-left">Reimbursement History</h2>
+        <table class="table table-hover">
+          <thead>
+            <th scope="col">ID</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Submission</th>
+            <th scope="col">Resolved</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Resolver</th>
+            <th scope="col">Status</th>
+            <th scope="col">Type</th>
+            <th scope="col"></th>
+          </thead>
+          <tbody>
+            <tr [class.active]="reimbbId === adRows" *ngFor="let adRows of reim">
+              <td>{{ adRows.reimbid }}</td>
+              <td>{{ adRows.amount | currency }}</td>
+              <td>{{ adRows.submitted | date}}</td>              
+              <td>{{ adRows.Resolved | date }}</td>
+              <td>{{ adRows.description }}</td>
+              <td>{{ adRows.author }}</td>
+              <td>{{ adRows.resolver }}</td>
+              <td>{{ adRows.status }}</td>
+              <td>{{ adRows.type }}</td>
+              <td>          </td>
+              </tr>
+          </tbody>
+        </table>
+<!-- 
+        <div class="col">
+          <button type="button" class="btn btn-primary" (click)="updateRequestApprove(value)">Approve!</button>
+          <button type="button" class="btn btn-primary" (click)="updateRequestDeny(value)">Deny!</button>
+      </div> -->
+        </div>
+      </div>
+  

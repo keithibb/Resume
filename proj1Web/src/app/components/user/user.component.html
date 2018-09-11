@@ -1,0 +1,79 @@
+
+  <table>
+    <thead>
+      <th>Name</th>
+      <th>email</th>
+      <th>role</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{this.authService.user.firstname }}
+        {{ this.authService.user.lastname}}</td>
+        <td>{{ this.authService.user.email }}</td>
+        <td>{{ this.authService.user.userole }}</td>
+      </tr>
+    </tbody>
+  </table>
+ 
+  <div class="container">
+    <div class="row">
+      <div class="col-8">
+        <h2 class="text-left">Reimbursement History</h2>
+        <table class="table table-hover">
+          <thead>
+            <th scope="col">Amount</th>
+            <th scope="col">Submission</th>
+            <th scope="col">Resolved</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Resolver</th>
+            <th scope="col">Status</th>
+            <th scope="col">Type</th>
+          </thead>
+          <tbody>
+            <tr scope="row" *ngFor="let reimRows of reim" >
+              <td>{{ reimRows.amount | currency }}</td>
+              <td>{{ reimRows.submitted | date}}</td>              
+              <td>{{ reimRows.Resolved | date }}</td>
+              <td>{{ reimRows.description }}</td>
+              <td>{{ reimRows.author }}</td>
+              <td>{{ reimRows.resolver }}</td>
+              <td>{{ reimRows.status }}</td>
+              <td>{{ reimRows.type }}</td>
+              </tr>
+          </tbody>
+        </table>
+
+
+      <div class="form-group">
+        <form (submit)="createReimb()">
+          <div class="form-group">
+            <h2>Reimbursement Form</h2>
+            <label for="amount">Please Enter an amount:</label>
+            <input type="number" class="form-control" id="amount" name="amount" required [(ngModel)]="amount" />
+
+        <label for="description">Description:</label>
+          <input type="Description" class="form-control" id="description" 
+        name="Description" required [(ngModel)]="description" />      
+      </div>
+
+      <div class="form-dropdown">
+          <label for="description">Request Type:</label>
+          <select id="type" name="dropdown" required [(ngModel)]="type" >
+            <option value="" selected disabled hidden>Choose here</option>
+            <option value="lodging">Lodging</option>
+            <option value="travel">Travel</option>
+            <option value="food">Food</option>
+            <option value="other">Other</option>
+          </select>
+      </div>
+      <input type="submit" class="btn btn-primary mb-2" value="submit!">
+    </form>
+  </div>
+
+
+
+
+ </div> 
+</div>
+  

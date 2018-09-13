@@ -40,10 +40,14 @@ GetReimb(){
 
 }
 
-    createReimb(){   
- 
-        this.authService.addReimb(this.amount, this.description, this.type, this.author)
-        this.route.navigate(['user']);
-              }
-      }
+addReimb(){   
+    this.authService.addReimb(this.amount, this.description, this.type, this.authService.user.username)
+    .subscribe(data => this.GetReimb)
+    
+    // this.route.navigate(['user']);
+    }
+
+
+
+  }
     

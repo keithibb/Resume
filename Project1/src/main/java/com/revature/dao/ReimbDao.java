@@ -26,16 +26,16 @@ public class ReimbDao {
 			return instance;
 	}	
 	//adding a reimbursement
-	public void addRiemb(ReimObj rObj) {
+	public void addRiembursement(Reimbursement r) {
 		try(Connection conn = ConnectionFactory.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("insert into reimbursement (amount, submit_time, r_desc, author, resolver, rs_id, rt_id) "
 					+ "values (?,sysdate, ?, ?, 1, ?");
 
-			ps.setDouble(1, rObj.getAmount());
-			ps.setString(2, rObj.getDesc());
-			ps.setString(3, rObj.getResolver());
-			ps.setInt(4, rObj.getRt_id());
-		
+			ps.setDouble(1, r.getAmount());
+			ps.setString(2, r.getDescription());
+			ps.setString(3, r.getResolver());
+			ps.setInt(4, typeOfReim(r.getType()));
+			ps.executeUpdate();
 	} catch (SQLException e) {
 		System.err.println(e.getErrorCode() + e.getSQLState());
 	}
@@ -133,4 +133,34 @@ public class ReimbDao {
 		}
 		return 0;
 	}
+	public static int typeOfReim(String s) {
+		
+		switch(s) {
+		case "LODGING":
+			return 1;
+		case "TRAVEL":
+			return 2;
+		case "FOOD":
+			return 3;
+		case "OTHER":
+			return 4;
+		default:
+			return 1;
+		}
+	}
+	public static int statusOfReim(String s) {
+		switch(s) {
+		case "OPEN":
+			return 1;
+		case "APPROVED":
+			return 2;
+		case "DENIED":
+			return 3;
+		case "CLOSED":
+			return 4;
+		default:
+			return 1;
+		}	
+	}
+	
 }

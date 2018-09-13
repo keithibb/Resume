@@ -44,15 +44,15 @@ public class ReimbService {
 	public static Object addReimb(HttpServletRequest req, HttpServletResponse resp) {
 		ObjectMapper mapper = new ObjectMapper();
 		
-		ReimObj rObj = null;
+		Reimbursement r = null;
 		try {
 			
-			rObj= mapper.readValue(req.getReader(), ReimObj.class);
+			r= mapper.readValue(req.getReader(), Reimbursement.class);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+
 			e.printStackTrace();
 		}
-		rd.addRiemb(rObj);
+		rd.addRiembursement(r);
 		return null;
 	}	
 	public static Object updateReimb(HttpServletRequest req, HttpServletResponse resp) {

@@ -23,7 +23,7 @@ public class MasterDispatcher {
 			return ReimbService.GetReimb(request, response);
 		case "/Project1/allreimbursements.ng":
 			return ReimbService.getAllReimb(request, response);
-		case "/Project1/addReib.ng":
+		case "/Project1/addReimb.ng":
 			return ReimbService.addReimb(request, response);
 		case "/Project1/updateReimb":
 			return ReimbService.updateReimb(request, response);

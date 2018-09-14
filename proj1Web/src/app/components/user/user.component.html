@@ -46,7 +46,7 @@
 
 
       <div class="form-group">
-        <form (submit)="createReimb()">
+        <form (submit)="addReimb()">
           <div class="form-group">
             <h2>Reimbursement Form</h2>
             <label for="amount">Please Enter an amount:</label>
@@ -61,10 +61,10 @@
           <label for="description">Request Type:</label>
           <select id="type" name="dropdown" required [(ngModel)]="type" >
             <option value="" selected disabled hidden>Choose here</option>
-            <option value="lodging">Lodging</option>
-            <option value="travel">Travel</option>
-            <option value="food">Food</option>
-            <option value="other">Other</option>
+            <option value="LODGING">Lodging</option>
+            <option value="TRAVEL">Travel</option>
+            <option value="FOOD">Food</option>
+            <option value="OTHER">Other</option>
           </select>
       </div>
       <input type="submit" class="btn btn-primary mb-2" value="submit!">

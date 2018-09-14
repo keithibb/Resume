@@ -15,7 +15,7 @@ export class UserComponent implements OnInit {
   user: User;
   reim: Reimbursement;
  
-  private author: string;
+  // private author: string;
   private amount: number;
   private description: string;
  
@@ -44,7 +44,7 @@ addReimb(){
     this.authService.addReimb(this.amount, this.description, this.type, this.authService.user.username)
     .subscribe(data => this.GetReimb)
     
-    // this.route.navigate(['user']);
+    this.route.navigate(['user'])
     }
 
 

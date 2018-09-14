@@ -29,15 +29,16 @@ public class ReimbDao {
 	public void addRiembursement(Reimbursement r) {
 		try(Connection conn = ConnectionFactory.getConnection()) {
 			PreparedStatement ps = conn.prepareStatement("insert into reimbursement (amount, submit_time, r_desc, author, resolver, rs_id, rt_id) "
-					+ "values (?,sysdate, ?, ?, 1, ?");
+					+ "values (?, sysdate, ?, ?,NULL, 1, ?)");
 
 			ps.setDouble(1, r.getAmount());
 			ps.setString(2, r.getDescription());
-			ps.setString(3, r.getResolver());
+			ps.setString(3, r.getAuthor());
 			ps.setInt(4, typeOfReim(r.getType()));
 			ps.executeUpdate();
-	} catch (SQLException e) {
-		System.err.println(e.getErrorCode() + e.getSQLState());
+		} catch (SQLException sql) {
+			System.err.println("SQL State: " + sql.getSQLState());
+			System.err.println("Error Code: " + sql.getErrorCode());
 	}
 	}		
 	//gets reimbursements by username
@@ -128,8 +129,9 @@ public class ReimbDao {
 				return 1;
 			}
 			
-		} catch (SQLException ex) {
-			ex.printStackTrace();
+		} catch (SQLException sql) {
+			System.err.println("SQL State: " + sql.getSQLState());
+			System.err.println("Error Code: " + sql.getErrorCode());
 		}
 		return 0;
 	}
@@ -145,7 +147,7 @@ public class ReimbDao {
 		case "OTHER":
 			return 4;
 		default:
-			return 1;
+			return 4;
 		}
 	}
 	public static int statusOfReim(String s) {

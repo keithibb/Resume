@@ -10,7 +10,6 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
 
-import com.revature.model.ReimObj;
 import com.revature.model.Reimbursement;
 import com.revature.model.UserInformation;
 import com.revature.util.ConnectionFactory;
@@ -116,13 +115,13 @@ public class ReimbDao {
 					
 		}
 	//updating reimbursement requets
-	public int updateReimb(ReimObj rObj) {
+	public int updateReimb(Reimbursement r) {
 		try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 			String sql = "UPDATE REIMBURSEMENT SET RESOLVED_TIME = SYSDATE, RESOLVER = ?, RS_ID = ? WHERE R_ID = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, "admin");
-			ps.setInt(2, rObj.getRs_id());
-			ps.setInt(3, rObj.getId());			
+			ps.setInt(2, statusOfReim(r.getStatus()));
+			ps.setInt(3, r.getReimbbId());			
 			int i = ps.executeUpdate();
 			
 			if (i == 1) {

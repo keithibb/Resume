@@ -25,7 +25,7 @@ public class MasterDispatcher {
 			return ReimbService.getAllReimb(request, response);
 		case "/Project1/addReimb.ng":
 			return ReimbService.addReimb(request, response);
-		case "/Project1/updateReimb":
+		case "/Project1/updateReimb.ng":
 			return ReimbService.updateReimb(request, response);
 		default:
 			return "Path is messed up";

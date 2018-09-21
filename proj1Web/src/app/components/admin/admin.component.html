@@ -32,11 +32,11 @@
             <!-- <th scope="col"></th> -->
           </thead>
           <tbody>
-            <tr [class.active]="reimbbId === adRows" *ngFor="let adRows of reim" (click)="onSelect(adRows.reimbid)">
-              <td>{{ adRows.reimbid }}</td>
+            <tr [class.active]="reimbbId === adRows" *ngFor="let adRows of reim" (click)="onSelect(adRows.reimbbId)">
+              <td>{{ adRows.reimbbId }}</td>
               <td>{{ adRows.amount | currency }}</td>
               <td>{{ adRows.submitted | date}}</td>              
-              <td>{{ adRows.Resolved | date }}</td>
+              <td>{{ adRows.resolved | date }}</td>
               <td>{{ adRows.description }}</td>
               <td>{{ adRows.author }}</td>
               <td>{{ adRows.resolver }}</td>
@@ -46,8 +46,10 @@
               </tr>
           </tbody>
         </table>
-
-
+        <div class="row">
+          <div class="col">
+            <button type="button" class="btn btn-primary" (click)="Approve(value)">Approve!</button>
+            <button type="button" class="btn btn-primary" (click)="Deny(value)">Deny!</button>
+          </div>
         </div>
       </div>
-  

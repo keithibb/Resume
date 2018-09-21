@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   reim: Reimbursement[];
   
   private reimbbId: number;
-  private resolver: string;
+  // private resolver: string;
   private status: string;
   
 
@@ -35,8 +35,31 @@ export class AdminComponent implements OnInit {
     .subscribe(data => {this.reim = data;
     });
   }
-  updateReimb(){
-    this.authService.updateReimb(this.reimbbId, this.resolver, this.status)
 
+  onSelect(reimbbId: number){
+    this.reimbbId = reimbbId;
+    console.log(reimbbId)
   }
+
+Approve(){
+  this.status = "APPROVED";
+  if (this.reimbbId === undefined) {
+    alert('Please select a row');
+  } else { this.authService.updateReimb(this.reimbbId, this.authService.user.username, this.status)
+      .subscribe(data => {
+        this.getAllReimb();
+    });
+  }
+}
+
+Deny() {
+  this.status = "DENIED";
+  if (this.reimbbId === undefined) {
+    alert('Please select a row');
+  } else { this.authService.updateReimb(this.reimbbId, this.authService.user.username, this.status)
+      .subscribe(data => {
+        this.getAllReimb();
+    });
+  }
+}
 }

@@ -15,11 +15,11 @@ export class UserComponent implements OnInit {
   user: User;
   reim: Reimbursement;
  
-  // private author: string;
+
   private amount: number;
   private description: string;
- 
   private type: string;
+ 
   constructor(private authService: AuthService, private route: Router) { }
   
 
@@ -42,12 +42,8 @@ GetReimb(){
 
 addReimb(){   
     this.authService.addReimb(this.amount, this.description, this.type, this.authService.user.username)
-    .subscribe(data => this.GetReimb)
-    
-    this.route.navigate(['user'])
+    .subscribe(data => { this.GetReimb;
     }
 
-
-
-  }
-    
+    );}
+}  

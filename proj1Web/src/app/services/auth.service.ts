@@ -40,8 +40,7 @@ emp: Reimbursement;
   }
   updateReimb(reimbbId: number, resolver: string, status: string): Observable<any>{
   console.log(reimbbId, resolver, status)
-    // return this.http.post<any>('http://localhost:8888/Project1/updateReimb', {reimbbId: reimbbId, resolver:resolver, status: status},
-    // {withCredentials : true} );
-    return new Observable<any>();
-  }
+    return this.http.post<any>('http://localhost:8888/Project1/updateReimb.ng', {reimbbId: reimbbId, resolver:resolver, status: status},
+    {withCredentials : true} );
+    }
 }

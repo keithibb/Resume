@@ -60,7 +60,7 @@ public class ReimbDao {
 				r.setAmount(rs.getDouble(2));
 				r.setSubmitted(rs.getTimestamp(3, cal));
 				r.setResolved(rs.getTimestamp(4, cal));
-				r.setDescription(rs.getString(2));
+				r.setDescription(rs.getString(5));
 				r.setAuthor(rs.getString(6));
 				r.setResolver(rs.getString(7));
 				r.setStatus(rs.getString(8));
@@ -98,7 +98,7 @@ public class ReimbDao {
 				r.setAmount(rs.getDouble(2));
 				r.setSubmitted(rs.getTimestamp(3, cal));
 				r.setResolved(rs.getTimestamp(4, cal));
-				r.setDescription(rs.getString(2));
+				r.setDescription(rs.getString(5));
 				r.setAuthor(rs.getString(6));
 				r.setResolver(rs.getString(7));
 				r.setStatus(rs.getString(8));
